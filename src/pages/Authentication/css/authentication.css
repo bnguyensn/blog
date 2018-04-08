@@ -1,0 +1,115 @@
+/** ********* PAGE ********* **/
+
+#auth-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%; height: 100vh;
+
+    background-color: #212121;  /* Grey 900 */
+}
+
+/** ********* AUTH CONTROL CONTAINER ********* **/
+
+.auth-ctl-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    max-width: 20em;
+
+    border-radius: 10px;
+
+    background-color: #FAFAFA;  /* Grey 50 */
+}
+
+/** ********* AUTH CONTROL COMPONENT#1 - AUTH FORM SELECTION BUTTONS ********* **/
+
+.auth-sel-container {
+    display: flex;
+    justify-content: center;
+    flex-basis: 100%;
+}
+
+.auth-sel-btn {
+    flex-basis: 50%;
+
+    padding: 0.5em 1em;
+
+    text-align: center;
+
+    user-select: none;
+    cursor: pointer;
+}
+
+.auth-sel-btn.active {
+
+}
+
+.auth-sel-btn.inactive {
+    background-color: #E0E0E0;  /* Grey 300 */
+    color: #757575;  /* Grey 600 */
+}
+
+/** ********* AUTH CONTROL COMPONENT#2 - AUTH FORMS ********* **/
+
+.auth-form-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    padding: 1em;
+
+    font-size: 0.75em;
+}
+
+.auth-form-label {
+    display: flex;
+    justify-content: flex-end;
+    flex-basis: 100%;
+}
+
+.auth-form-label > * {
+    margin: 0.2em;
+}
+
+.auth-form-label span {
+    flex-grow: 1;
+
+    text-align: center;
+}
+
+.auth-form-label input {
+    font: inherit;
+}
+
+.auth-form-submit-btn {
+    margin: 1em;
+    max-width: 50%;
+    padding: 0.5em 1em;
+
+    border-radius: 5px;
+
+    background-color: #7CB342;  /* Light Green 600 */
+
+    text-align: center;
+    color: #fafafa;
+
+    cursor: pointer;
+    user-select: none;
+}
+
+.auth-form-submit-btn:hover {
+    background-color: #689F38;  /* Light Green 700 */
+}
+
+.auth-form-submit-btn:active {
+    background-color: #558B2F;  /* Light Green 800 */
+}
+
+/** ********* AUTH CONTROL COMPONENT#3 - AUTH STATUS TEXT ********* **/
+
+.auth-status-txt {
+    text-align: center;
+}

@@ -15,7 +15,6 @@ const bodyParser = require('body-parser');  // Needed to access POST requests' d
 const helmet = require('helmet');  // Production security package
 
 // Features
-const blogDb = require('./server/blog/connect');
 
 /**
  * ROUTER MODULES =========
@@ -24,9 +23,6 @@ const blogDb = require('./server/blog/connect');
  * */
 
 const index = require('./server/routes/index');
-const blog = require('./server/routes/blog');
-// const login = require('./server/routes/login');
-// const chat = require('./server/routes/chat');
 
 /**
  * EXPRESS APPLICATION ==========
@@ -43,10 +39,9 @@ app.set('view engine', 'pug');
 //app.use(favicon(path.join(__dirname, 'src', 'favicon.ico')));
 
 // Set up port
-app.set('port', process.env.PORT || 63343);
+app.set('port', process.env.PORT || 63345);
 
 // Set up features
-//blog_db.connect();
 
 /**
  * LOAD MIDDLEWARES ==========
@@ -56,7 +51,7 @@ app.set('port', process.env.PORT || 63343);
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
-app.use(cookieParser(process.env.BLOG_DB_JWT_SECRET));
+app.use(cookieParser(process.env.DB_JWT_SECRET));
 
 // Production security
 app.use(helmet());
@@ -84,9 +79,6 @@ app.use(express.static(path.join(__dirname, 'dist'), {
 // Finally, after loading the router modules above, we attach website paths to them
 // This is just like loading another middleware
 app.use('/', index);
-app.use('/blog', blog);
-// app.use('/login', login);
-// app.use('/chat', chat);
 
 /**
  * ERROR HANDLING ==========
@@ -95,26 +87,6 @@ app.use('/blog', blog);
 const errors = require('./server/routes/errors');
 
 app.use(errors);
-
-/*// Catch 404
-app.use(function (req, res, next) {
-    let err = new Error('Not Found');
-    err.status = 404;
-    next(err);
-});
-
-// Error handler
-app.use(function (err, req, res, next) {
-    if (res.headersSent) return next(err);
-
-    // set locals, only providing error in development
-    res.locals.message = err.message;
-    res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-    // render the error page
-    res.status(err.status || 500);
-    res.render('error');
-});*/
 
 /**
  * START THE APPLICATION ==========

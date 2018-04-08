@@ -117,32 +117,22 @@ module.exports = () => {
 
             // HTML creation
             new HtmlWebpackPlugin({
-                template: path.resolve(__dirname, 'src/html/t_index.html'),
-                //inject: true,
-                chunks: ['index', 'vendors', 'runtime~index'],
-                filename: '../index.html'
-            }),
-            new HtmlWebpackPlugin({
-                template: path.resolve(__dirname, 'src/html/t_login.html'),
-                //inject: true,
-                chunks: ['login', 'vendors', 'runtime~login'],
-                filename: '../login.html'
-            }),
-            new HtmlWebpackPlugin({
-                template: path.resolve(__dirname, 'src/html/t_chat.html'),
-                //inject: true,
-                chunks: ['chat', 'vendors', 'runtime~chat'],
-                filename: '../chat.html'
-            }),
-            new HtmlWebpackPlugin({
-                template: path.resolve(__dirname, 'src/pages/Blog/blog_t.html'),
-                //inject: true,
-                chunks: ['blog', 'vendors', 'runtime~blog'],
+                template: path.resolve(__dirname, 'src/authentication-t.html'),
+                chunks: ['authentication', 'vendors', 'runtime~authentication'],
                 chunksSortMode: (a, b) => {
-                    const order = ['blog', 'vendors', 'runtime~blog'];
+                    const order = ['authentication', 'vendors', 'runtime~authentication'];
                     return order.indexOf(b.names[0]) - order.indexOf(a.names[0])
                 },
-                filename: '../blog.html'
+                filename: '../authentication.html'
+            }),
+            new HtmlWebpackPlugin({
+                template: path.resolve(__dirname, 'src/dashboard-t.html'),
+                chunks: ['dashboard', 'vendors', 'runtime~dashboard'],
+                chunksSortMode: (a, b) => {
+                    const order = ['dashboard', 'vendors', 'runtime~dashboard'];
+                    return order.indexOf(b.names[0]) - order.indexOf(a.names[0])
+                },
+                filename: '../dashboard.html'
             }),
 
             // Webpack caching. This is needed to cache the manifest file correctly

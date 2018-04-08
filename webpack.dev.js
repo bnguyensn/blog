@@ -62,16 +62,10 @@ module.exports = () => {
         },
 
         plugins: [
-            // Define environment
+            // Define environment - not needed
             // webpack 4.0: now has mode. Environment variables are defaulted with mode as well
-            /*new webpack.DefinePlugin({
-                'process.env.NODE_ENV': JSON.stringify('development')  // Different from prod config
-            }),*/
 
-            // Webpack caching. This is needed to cache the manifest file correctly
-            // For production builds, we use HashedModuleIdsPlugin instead
-            // === webpack 4.0 -> this is optimization.namedModules (on by default in development mode
-            //new webpack.NamedModulesPlugin(),
+            // Webpack caching: webpack 4.0 -> this is optimization.namedModules (on by default in development mode
 
             // Hot Module Replacement
             new webpack.HotModuleReplacementPlugin(),
@@ -80,14 +74,11 @@ module.exports = () => {
         devtool: 'inline-source-map',
 
         devServer: {
-            // The location of the "index.html" for webpack-dev-server:
-            contentBase: [
-                path.join(__dirname, 'src/pages/Blog'),
-                path.join(__dirname, 'src')
-            ],
+            // The location of the html files for webpack-dev-server. NOTE: can be an array
+            contentBase: path.join(__dirname, 'src'),
 
             compress: true,
-            port: 8080,
+            port: 8082,
             overlay: {
                 errors: true,
                 warnings: true
@@ -96,16 +87,16 @@ module.exports = () => {
                 extensions: ['html']  // This is needed to serve html files other than 'index.html'.
             },
             proxy: {  // Because we are involving (note: not using) an Express dev server
-                "/login/api": "http://localhost:63343"
+                //"/": "http://localhost:63345"
             },
             historyApiFallback: {
                 rewrites: [
                     // Redirects homepage-related URLs
-                    { from: '/about', to: '/index.html' },
-                    { from: '/archive', to: '/index.html' },
+                    { from: '/', to: '/authentication.html' },
+                    /*{ from: '/archive', to: '/index.html' },
                     { from: '/projects', to: '/index.html' },
                     { from: '/contact', to: '/index.html' },
-                    { from: '/404', to: '/index.html' },
+                    { from: '/404', to: '/index.html' },*/
                 ]
             },
 
