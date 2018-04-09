@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Authentication from './pages/Dashboard/Dashboard';
+import Dashboard from './pages/Dashboard/Dashboard';
 
 import './index.css';
 import './pages/Dashboard/css/dashboard.css';
 
 ReactDOM.render(
-    <Authentication />,
+    <Dashboard />,
     document.getElementById('root')
 );
 
