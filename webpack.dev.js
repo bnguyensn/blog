@@ -92,7 +92,7 @@ module.exports = () => {
             historyApiFallback: {
                 rewrites: [
                     // Redirects homepage-related URLs
-                    { from: '/', to: '/authentication.html' },
+                    { from: '/', to: '/dashboard.html' },
                     /*{ from: '/archive', to: '/index.html' },
                     { from: '/projects', to: '/index.html' },
                     { from: '/contact', to: '/index.html' },

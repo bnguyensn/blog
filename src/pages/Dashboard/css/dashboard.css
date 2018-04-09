@@ -1,2 +1,23 @@
-/** ********** CONSOLE ********** **/
+/** ********** PAPER CONTROL BUTTONS ********** **/
 
+.paper-control-btn {
+    position: relative;
+
+    margin: 2px;
+    width: 50px; height: 50px;
+    padding: 2px;
+
+    user-select: none;
+    cursor: pointer;
+}
+
+.paper-control-btn-tt {
+    position: absolute;
+    left: 50%; bottom: 100%;
+
+    background-color: #212121;
+
+    text-align: center;
+    color: #fafafa;
+    font-size: 0.25em;
+}

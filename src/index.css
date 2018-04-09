@@ -119,4 +119,4 @@ path.msvg-grey { fill: #BDBDBD; }  /* Grey 400 */
 .material-icons.md-yellow.inactive { color: rgba(255,202,40 ,0.3); }
 
 /* ***** My other rules ***** */
-.micon-container { display: flex; align-items: center; }
+.micon { display: flex; align-items: center; }
