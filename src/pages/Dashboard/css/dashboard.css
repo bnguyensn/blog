@@ -1,6 +1,6 @@
 /** ********** PAPER CONTROL BUTTONS ********** **/
 
-.paper-control-btn {
+.paper-cp-btn {
     position: relative;
 
     margin: 2px;
@@ -11,13 +11,55 @@
     cursor: pointer;
 }
 
-.paper-control-btn-tt {
+.paper-cp-btn-tt {
     position: absolute;
-    left: 50%; bottom: 100%;
+    left: 50%; bottom: 110%;
+
+    padding: 5px;
 
     background-color: #212121;
 
     text-align: center;
     color: #fafafa;
     font-size: 0.25em;
+}
+
+/** ********** PAPER CONTROL PANEL ********** **/
+
+#paper-control-panel {
+
+}
+
+/** ********** PAPER SECTION ********** **/
+
+.paper-section {
+
+}
+
+#paper-section-title {
+    height: 1em;
+
+    font-size: 1.5em;
+}
+
+#paper-section-body {
+    height: 20em;
+}
+
+/** ********** PAPER ********** **/
+
+#paper {
+
+}
+
+/** ********** DASHBOARD PAGE ********** **/
+
+#dashboard-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%; height: 100vh;
+
+    background-color: #212121;  /* Grey 900 */
 }
