@@ -3,9 +3,11 @@
 .paper-cp-btn {
     position: relative;
 
-    margin: 2px;
-    width: 50px; height: 50px;
-    padding: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 1.5em; height: 1.5em;
 
     user-select: none;
     cursor: pointer;
@@ -13,43 +15,78 @@
 
 .paper-cp-btn-tt {
     position: absolute;
-    left: 50%; bottom: 110%;
+    bottom: 110%;
 
-    padding: 5px;
+    padding: .5em;
 
-    background-color: #212121;
+    border-radius: 2px;
+
+    background-color: #424242;  /* Grey 800 */
 
     text-align: center;
     color: #fafafa;
-    font-size: 0.25em;
+    font-size: 0.5em;
 }
 
 /** ********** PAPER CONTROL PANEL ********** **/
 
 #paper-control-panel {
-
+    display: flex;
+    justify-content: center;
 }
 
 /** ********** PAPER SECTION ********** **/
 
-.paper-section {
+/* General */
 
+.paper-section {
+    width: 40em;
+    background-color: #fafafa;  /* Grey 50 */
 }
+
+.paper-section > div {
+    /* contenteditable element */
+    box-sizing: content-box;
+    width: 100%; height: 100%;
+}
+
+.paper-section > div:focus {
+    /* contenteditable element */
+    outline: 0;
+}
+
+/* Title */
 
 #paper-section-title {
-    height: 1em;
-
-    font-size: 1.5em;
+    padding: .4em 0.8em;
 }
 
+#paper-section-title > div {
+    /* contenteditable element */
+    height: 1.75em;
+    font-size: 1.25em;
+    line-height: 1.75em;
+    overflow: hidden;
+}
+
+/* Body */
+
 #paper-section-body {
+    padding: .5em 1em;
+}
+
+#paper-section-body > div {
+    /* contenteditable element */
     height: 20em;
+    overflow: scroll;
+    overflow-wrap: break-word;
 }
 
 /** ********** PAPER ********** **/
 
 #paper {
-
+    margin: .25em;
+    background-color: #424242;  /* Grey 800 */
 }
 
 /** ********** DASHBOARD PAGE ********** **/
@@ -59,7 +96,7 @@
     justify-content: center;
     align-items: center;
 
-    width: 100%; height: 100vh;
+    width: 100%; min-height: 100vh;
 
     background-color: #212121;  /* Grey 900 */
 }

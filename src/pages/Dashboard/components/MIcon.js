@@ -6,7 +6,9 @@ import React from 'react';
 function MIcon(props) {
     return (
         <span className='micon'>
-            <i className='material-icons'>{props.icon}</i>
+            <i className={`material-icons ${props.light ? 'md-light' : 'md-dark'}`}>
+                {props.icon}
+            </i>
         </span>
     )
 }

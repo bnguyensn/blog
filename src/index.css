@@ -88,6 +88,12 @@ h1 {
 
 /* ********** EXTERNAL SNIPPETS ********** */
 
+/* ***** My material icon rules ***** */
+
+.micon { display: flex; align-items: center; }
+svg.msvg-24 { width: 24px; height: 24px; }
+svg.msvg-36 { width: 36px; height: 36px; }
+
 /* ***** Google's material icon guidelines ***** */
 
 /* Rules for sizing the icon */
@@ -95,10 +101,6 @@ h1 {
 .material-icons.md-24 { font-size: 24px; }
 .material-icons.md-36 { font-size: 36px; }
 .material-icons.md-48 { font-size: 48px; }
-
-/* ***** My custom sizing rules ***** */
-svg.msvg-24 { width: 24px; height: 24px; }
-svg.msvg-36 { width: 36px; height: 36px; }
 
 /* Rules for using icons as black on a light background */
 .material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
@@ -117,6 +119,3 @@ path.msvg-grey { fill: #BDBDBD; }  /* Grey 400 */
 .material-icons.md-red.inactive { color: rgba(239, 83, 80, 0.3); }
 .material-icons.md-yellow { color: rgba(255,202,40 ,1); }  /* Amber 400 */
 .material-icons.md-yellow.inactive { color: rgba(255,202,40 ,0.3); }
-
-/* ***** My other rules ***** */
-.micon { display: flex; align-items: center; }

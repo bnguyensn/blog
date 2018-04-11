@@ -24,7 +24,6 @@ class PaperControlButton extends PureComponent {
     }
 
     handleMouseEnter() {
-
         // Show tooltip
         this.setState({
             hover: true
@@ -32,7 +31,6 @@ class PaperControlButton extends PureComponent {
     }
 
     handleMouseLeave() {
-
         // Hide tooltip
         this.setState({
             hover: false
@@ -40,7 +38,6 @@ class PaperControlButton extends PureComponent {
     }
 
     handleMouseClick() {
-
         // Run command
         document.execCommand(this.props.command, false, null);
     }
@@ -51,7 +48,7 @@ class PaperControlButton extends PureComponent {
                  onMouseEnter={this.handleMouseEnter}
                  onMouseLeave={this.handleMouseLeave}
                  onClick={this.handleMouseClick}>
-                <MIcon icon={props.icon} />
+                <MIcon icon={this.props.icon} light />
                 <PaperControlButtonTooltip show={this.state.hover}
                                            tooltipText={this.props.tooltipText} />
             </div>
@@ -71,18 +68,40 @@ class PaperControlPanel extends PureComponent {
     }
 }
 
-class PaperSection extends PureComponent {
+class PaperSectionTitle extends PureComponent {
+    constructor(props) {
+        super(props);
+        this.handleKeyDown = this.handleKeyDown.bind(this);
+    }
+
+    handleKeyDown(e) {
+        if (e.keyCode === 13) {
+            // Prevent line break, focus on body instead
+            e.preventDefault();
+            document.getElementById('paper-section-body').firstElementChild.focus();
+        }
+    }
+
+    render() {
+        //TODO: this needs to be <input/>
+        return (
+            <div id='paper-section-title' className='paper-section'
+                 onKeyDown={this.handleKeyDown}>
+                <div contentEditable />
+            </div>
+        )
+    }
+}
+
+class PaperSectionBody extends PureComponent {
     constructor(props) {
         super(props);
     }
 
     render() {
         return (
-            <div contentEditable
-                 id={this.props.id}
-                 className='paper-section'
-                 >
-
+            <div id='paper-section-body' className='paper-section'>
+                <div contentEditable />
             </div>
         )
     }
@@ -92,9 +111,9 @@ class Paper extends PureComponent {
     render() {
         return (
             <div id='paper'>
+                <PaperSectionTitle />
                 <PaperControlPanel />
-                <PaperSection id='paper-section-title' />
-                <PaperSection id='paper-section-body' />
+                <PaperSectionBody />
             </div>
         )
     }
