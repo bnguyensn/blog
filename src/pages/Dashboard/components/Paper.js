@@ -76,18 +76,19 @@ class PaperSectionTitle extends PureComponent {
 
     handleKeyDown(e) {
         if (e.keyCode === 13) {
-            // Prevent line break, focus on body instead
+            // Prevent submission, focus on body instead
             e.preventDefault();
             document.getElementById('paper-section-body').firstElementChild.focus();
         }
     }
 
     render() {
-        //TODO: this needs to be <input/>
         return (
             <div id='paper-section-title' className='paper-section'
-                 onKeyDown={this.handleKeyDown}>
-                <div contentEditable />
+                   >
+                <input type='text'
+                       onKeyDown={this.handleKeyDown}>
+                </input>
             </div>
         )
     }

@@ -44,29 +44,17 @@
     background-color: #fafafa;  /* Grey 50 */
 }
 
-.paper-section > div {
-    /* contenteditable element */
-    box-sizing: content-box;
-    width: 100%; height: 100%;
-}
-
-.paper-section > div:focus {
-    /* contenteditable element */
-    outline: 0;
-}
-
 /* Title */
 
 #paper-section-title {
     padding: .4em 0.8em;
 }
 
-#paper-section-title > div {
-    /* contenteditable element */
-    height: 1.75em;
+#paper-section-title > input {
+    border: 0;
+    width: 100%;
+    padding: 0;
     font-size: 1.25em;
-    line-height: 1.75em;
-    overflow: hidden;
 }
 
 /* Body */
@@ -77,9 +65,15 @@
 
 #paper-section-body > div {
     /* contenteditable element */
-    height: 20em;
+    box-sizing: content-box;
+    width: 100%; height: 20em;
     overflow: scroll;
     overflow-wrap: break-word;
+}
+
+#paper-section-body > div:focus {
+    /* contenteditable element */
+    outline: 0;
 }
 
 /** ********** PAPER ********** **/
