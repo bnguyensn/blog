@@ -1,3 +1,33 @@
+/** ********** ********** ********** ********** **/
+
+/** ********** CONSOLE ********** **/
+
+#console-window > div {
+    /* contenteditable */
+    width: 100%; height: 100%;
+
+    font-family: 'PT Mono', 'monospace';
+    font-size: .66em;
+    color: #fafafa;
+
+    overflow: scroll;
+    overflow-wrap: break-word;
+}
+
+#console-window > div:focus {
+    /* contenteditable element */
+    outline: 0;
+}
+
+#console-window {
+    width: 20em; height: 20em;
+    padding: .5em;
+
+    background-color: #263238;  /* Blue Grey 900 */
+}
+
+/** ********** ********** ********** ********** **/
+
 /** ********** PAPER CONTROL BUTTONS ********** **/
 
 .paper-cp-btn {
@@ -82,6 +112,8 @@
     margin: .25em;
     background-color: #424242;  /* Grey 800 */
 }
+
+/** ********** ********** ********** ********** **/
 
 /** ********** DASHBOARD PAGE ********** **/
 
