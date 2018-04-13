@@ -12,7 +12,7 @@ class Dashboard extends PureComponent {
     render() {
         return (
             <div id='dashboard-page'>
-                <Console />
+
                 <Paper />
             </div>
         )

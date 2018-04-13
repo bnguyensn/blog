@@ -1,5 +1,45 @@
 /** ********** ********** ********** ********** **/
 
+/** ********** BUTTON ********** **/
+
+.btn {
+    position: relative;
+
+    padding: .25em;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    user-select: none;
+    cursor: pointer;
+}
+
+.btn-tt {
+    position: absolute;
+    bottom: 110%;
+
+    padding: .5em;
+
+    border-radius: 2px;
+
+    background-color: #424242;  /* Grey 800 */
+
+    text-align: center;
+    color: #fafafa;
+    font-size: 0.5em;
+}
+
+/** ********** ********** ********** ********** **/
+
+/** ********** CONTROL PANEL ********** **/
+
+#cpanel {
+
+}
+
+/** ********** ********** ********** ********** **/
+
 /** ********** CONSOLE ********** **/
 
 #console-window > div {
@@ -27,36 +67,6 @@
 }
 
 /** ********** ********** ********** ********** **/
-
-/** ********** PAPER CONTROL BUTTONS ********** **/
-
-.paper-cp-btn {
-    position: relative;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    width: 1.5em; height: 1.5em;
-
-    user-select: none;
-    cursor: pointer;
-}
-
-.paper-cp-btn-tt {
-    position: absolute;
-    bottom: 110%;
-
-    padding: .5em;
-
-    border-radius: 2px;
-
-    background-color: #424242;  /* Grey 800 */
-
-    text-align: center;
-    color: #fafafa;
-    font-size: 0.5em;
-}
 
 /** ********** PAPER CONTROL PANEL ********** **/
 
