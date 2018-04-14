@@ -7,7 +7,7 @@ import {post} from "../../js/xhr";
 
 import './css/authentication.css';
 
-const SIGNUP_URL = '/api/signup';
+const SIGNUP_URL = '/api/create-new-user';
 const LOGIN_URL = '/api/login';
 
 class SignUpForm extends PureComponent {
@@ -31,9 +31,9 @@ class SignUpForm extends PureComponent {
 
     async submitSignUp() {
         try {
-            await post(SIGNUP_URL, `username=${this.state.username}&pwd=${this.state.pwd}`);
+            const insertedId = await post(SIGNUP_URL, `username=${this.state.username}&pwd=${this.state.pwd}`);
 
-            this.props.setStatusText('User successfully created.');
+            this.props.setStatusText(`User successfully created. Id = ${insertedId}`);
         }
         catch (e) {
             this.props.setStatusText(`Unable to created user: ${e.message}`);

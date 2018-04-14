@@ -15,17 +15,18 @@ const bodyParser = require('body-parser');  // Needed to access POST requests' d
 const helmet = require('helmet');  // Production security package
 
 // Features
+const mongoDBClient = require('./server/mongoDB/connect');
 
 /**
  * ROUTER MODULES =========
- * Each router module corresponds to a host in our domain
  * Also known as middleware functions
  * */
 
 const index = require('./server/routes/index');
+const apiUser = require('./server/routes/api-user');
 
 /**
- * EXPRESS APPLICATION ==========
+ * EXPRESS APPLICATION INITIALISATION ==========
  * */
 
 // Create the Express server
@@ -42,6 +43,14 @@ app.set('view engine', 'pug');
 app.set('port', process.env.PORT || 63345);
 
 // Set up features
+
+// Initialise mongoDB
+const auth = {
+    authUsr: process.env.DB_USR_ADMIN,
+    authPwd: process.env.DB_USR_ADMIN_PWD
+};
+app.locals.mongoDBUsers = mongoDBClient.createConnection(process.env.DB_USERS, auth);
+app.locals.mongoDBArticles = mongoDBClient.createConnection(process.env.DB_ARTICLES, auth);
 
 /**
  * LOAD MIDDLEWARES ==========
@@ -79,6 +88,7 @@ app.use(express.static(path.join(__dirname, 'dist'), {
 // Finally, after loading the router modules above, we attach website paths to them
 // This is just like loading another middleware
 app.use('/', index);
+app.use('/api/user', apiUser);
 
 /**
  * ERROR HANDLING ==========

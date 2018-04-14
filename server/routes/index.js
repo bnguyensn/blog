@@ -4,13 +4,13 @@ const express = require('express');
 const router = express.Router();
 const path = require('path');
 
-const users = require('../blog/authentication/users');
+const userMgmt = require('../mongoDB/authentication/user-mgmt');
 
 router.get('/', async (req, res, next) => {
 
     // Check cookie for login token which should be stored under the name "logininfo"
     try {
-        const tokenValid = await users.loginToken(req.signedCookies.logininfo);
+        const tokenValid = await userMgmt.loginToken(req.signedCookies.logininfo);
 
         const htmlOptions = {
             root: path.join(__dirname, '../../dist'),
