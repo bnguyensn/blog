@@ -12,6 +12,10 @@ const host = process.env.BLOG_DB_HOST;
 const port = process.env.BLOG_DB_PORT;
 const authSrc = process.env.BLOG_DB_AUTH_SRC;
 
+/**
+ * We should reuse the client object returned by this function
+ * For our express server, this means putting it into app.locals
+ * */
 async function connect(db_name, auth_opt) {
     try {
         // Instantiate connection and return the database instance

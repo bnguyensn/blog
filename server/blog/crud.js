@@ -1,6 +1,5 @@
 'use strict';
 
-const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
 
 const connect = require('./connect');
@@ -63,7 +62,7 @@ async function retrievePostBetweenDate(col, date_from, date_to) {
 
 /**
  * Return a specified number of articles from a specified date. Main use = retrieve x latest articles.
- * @param col - The mongodb collection to search in
+ * @param col {String} - The mongodb collection to search in
  * @param date_from - The timestamp from when the search will commence
  * @param quantity - How many articles to return
  * @return Array - An Array containing the specified articles
@@ -83,10 +82,7 @@ async function retrievePostFromDate(col, date_from, quantity) {
             });
         });
 
-        // Check for errors
-        assert.equal(null, r);
-
-        // No errors. Close connection
+        // Close connection
         db.close();
 
         // Return results
