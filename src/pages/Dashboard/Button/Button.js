@@ -4,6 +4,8 @@ import React, {PureComponent} from 'react';
 
 import MIcon from './MIcon';
 
+import './button.css';
+
 function ButtonTooltip(props) {
     return (
         <div className={`btn-tt ${props.show ? '' : 'hidden'}`}>
@@ -38,21 +40,26 @@ class Button extends PureComponent {
     }
 
     handleMouseClick() {
-        if (this.props.type === 'format') {
-            // Run format command
-            document.execCommand(this.props.command, false, null);
-        }
+        this.props.command(this.props.commandArg);
     }
 
     render() {
+        // Some explanations:
+        // - Optional ${this.props.size} guidelines specified in button.css. Default = body font size
+        // - Optional ${this.props.bkgColor} guidelines specified in button.css. Default = no bkgColor
+        // - <MIcon/>'s color guidelines are in index.css
+        // - <ButtonTooltip/> is only created if a tooltipText is passed
         return (
-            <div className='btn'
+            <div className={`btn ${this.props.size} ${this.props.bkgColor}`}
                  onMouseEnter={this.handleMouseEnter}
                  onMouseLeave={this.handleMouseLeave}
                  onClick={this.handleMouseClick}>
-                <MIcon icon={this.props.icon} light />
-                <ButtonTooltip show={this.state.hover}
-                                           tooltipText={this.props.tooltipText} />
+                <MIcon icon={this.props.icon} color={this.props.color} />
+                {
+                    this.props.tooltipText ?
+                    <ButtonTooltip show={this.state.hover} tooltipText={this.props.tooltipText} /> :
+                    null
+                }
             </div>
         )
     }

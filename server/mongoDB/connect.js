@@ -7,10 +7,10 @@
 
 const MongoClient = require('mongodb').MongoClient;
 
-const baseURL = process.env.BLOG_DB_BASE_URI;
-const host = process.env.BLOG_DB_HOST;
-const port = process.env.BLOG_DB_PORT;
-const authSrc = process.env.BLOG_DB_AUTH_SRC;
+const baseURL = process.env.DB_BASE_URI;
+const host = process.env.DB_HOST;
+const port = process.env.DB_PORT;
+const authSrc = process.env.DB_AUTH_SRC;
 
 /**
  * We should reuse the client object returned by this function

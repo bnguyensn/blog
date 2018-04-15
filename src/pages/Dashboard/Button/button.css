@@ -1,0 +1,32 @@
+.btn {
+    position: relative;
+
+    padding: .25em;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    user-select: none;
+    cursor: pointer;
+}
+
+.btn.large { font-size: 125%; }
+.btn.x-large { font-size: 150%; }
+
+.btn.green600 { background-color: #43A047 }
+
+.btn-tt {
+    position: absolute;
+    bottom: 110%;
+
+    padding: .5em;
+
+    border-radius: 2px;
+
+    background-color: #424242;  /* Grey 800 */
+
+    text-align: center;
+    color: #fafafa;
+    font-size: 0.5em;
+}

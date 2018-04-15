@@ -2,9 +2,8 @@
 
 import React, {PureComponent} from 'react';
 
-import ControlPanel from './components/ControlPanel';
-import Console from './components/Console';
-import Paper from './components/Paper';
+import ControlPanel from './ControlPanel/ControlPanel';
+import ArticleEditor from './ArticleEditor/ArticleEditor';
 
 import './css/dashboard.css';
 
@@ -12,8 +11,8 @@ class Dashboard extends PureComponent {
     render() {
         return (
             <div id='dashboard-page'>
-
-                <Paper />
+                <ControlPanel />
+                <ArticleEditor />
             </div>
         )
     }

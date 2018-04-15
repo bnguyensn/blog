@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 const pwdMgmt = require('./pwd-mgmt');
 
 const COLL_USERS = 'users';
-const JWT_SECRET = process.env.BLOG_DB_JWT_SECRET;
+const JWT_SECRET = process.env.DB_JWT_SECRET;
 
 /**
  * Create a new unique user

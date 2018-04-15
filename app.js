@@ -24,6 +24,7 @@ const mongoDBClient = require('./server/mongoDB/connect');
 
 const index = require('./server/routes/index');
 const apiUser = require('./server/routes/api-user');
+const apiArticle = require('./server/routes/api-article');
 
 /**
  * EXPRESS APPLICATION INITIALISATION ==========
@@ -89,6 +90,7 @@ app.use(express.static(path.join(__dirname, 'dist'), {
 // This is just like loading another middleware
 app.use('/', index);
 app.use('/api/user', apiUser);
+app.use('/api/article', apiArticle);
 
 /**
  * ERROR HANDLING ==========
