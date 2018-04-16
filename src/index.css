@@ -97,13 +97,14 @@ svg.msvg-36 { width: 36px; height: 36px; }
 /* ***** Google's material icon guidelines ***** */
 
 /* Rules for sizing the icon */
+.material-icons { font-size: inherit; }
 .material-icons.md-18 { font-size: 18px; }
 .material-icons.md-24 { font-size: 24px; }
 .material-icons.md-36 { font-size: 36px; }
 .material-icons.md-48 { font-size: 48px; }
 
 /* Rules for using icons as black on a light background */
-.material-icons.dark { color: rgba(0, 0, 0, 0.54); }
+.material-icons.dark { color: rgba(0, 0, 0, 0.75); }
 .material-icons.dark.md-inactive { color: rgba(0, 0, 0, 0.26); }
 
 /* Rules for using icons as white on a dark background */
@@ -113,9 +114,6 @@ svg.msvg-36 { width: 36px; height: 36px; }
 /* ***** My custom colouring rules ***** */
 path.msvg-grey { fill: #BDBDBD; }  /* Grey 400 */
 
-.material-icons.green400 { color: rgba(102, 187, 106, 1); }  /* Green 400 */
-.material-icons.green400.inactive { color: rgba(102, 187, 106, 0.3); }
-.material-icons.red400 { color: rgba(239, 83, 80, 1); }  /* Red 400 */
-.material-icons.red400.inactive { color: rgba(239, 83, 80, 0.3); }
-.material-icons.amber400 { color: rgba(255,202,40 ,1); }  /* Amber 400 */
-.material-icons.amber400.inactive { color: rgba(255,202,40 ,0.3); }
+
+.material-icons.grey100 { color: #F5F5F5; }
+.material-icons.c648572 { color: #648572; }

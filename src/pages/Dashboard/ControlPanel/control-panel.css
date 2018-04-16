@@ -1,0 +1,9 @@
+#cp {
+    display: flex;
+    justify-content: center;
+
+    flex-grow: 0;
+
+    margin: .5em 1em;
+    padding: .5em;
+}

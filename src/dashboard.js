@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import Dashboard from './pages/Dashboard/Dashboard';
 
 import './index.css';
-import './pages/Dashboard/css/dashboard.css';
+import './pages/Dashboard/dashboard.css';
 
 ReactDOM.render(
     <Dashboard />,

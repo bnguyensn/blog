@@ -38,6 +38,10 @@ class ControlPanel extends PureComponent {
                         command={handleFormat} commandArg='italic' />
                 <Button icon='format_underlined' color='light' tooltipText='Underline'
                         command={handleFormat} commandArg='underline' />
+                <Button icon='format_indent_increase' color='light' tooltipText='Increase indent'
+                        command={handleFormat} commandArg='indent' />
+                <Button icon='format_indent_decrease' color='light' tooltipText='Decrease indent'
+                        command={handleFormat} commandArg='outdent' />
                 <Button icon='format_list_bulleted' color='light' tooltipText='Bulleted list'
                         command={handleFormat} commandArg='insertUnorderedList' />
                 <Button icon='format_list_numbered' color='light' tooltipText='Numbered list'
@@ -55,6 +59,9 @@ class TitleSection extends PureComponent {
     constructor(props) {
         super(props);
         this.handleKeyDown = this.handleKeyDown.bind(this);
+
+        // Make the default paragraph separator consistent
+        document.execCommand('defaultParagraphSeparator', false, 'div');
     }
 
     handleKeyDown(e) {
@@ -79,12 +86,46 @@ class TitleSection extends PureComponent {
 class BodySection extends PureComponent {
     constructor(props) {
         super(props);
+        this.handleKeyDown = this.handleKeyDown.bind(this);
+        this.handleKeyUp = this.handleKeyUp.bind(this);
+        this.state = {
+            shiftPressed: false
+        };
+    }
+
+    handleKeyDown(e) {
+        switch (e.keyCode) {
+            case 32:
+                console.log('Spacebar');
+                break;
+            case 9:
+                e.preventDefault();
+                this.state.shiftPressed ? handleFormat('outdent') : handleFormat('indent');
+                break;
+            case 16:
+                this.setState({
+                    shiftPressed: true
+                });
+                break;
+        }
+    }
+
+    handleKeyUp(e) {
+        switch (e.keyCode) {
+            case 16:
+                this.setState({
+                    shiftPressed: false
+                });
+                break;
+        }
     }
 
     render() {
         return (
             <div id='ae-section-body' className='ae-section'>
-                <div contentEditable />
+                <div contentEditable
+                     onKeyDown={this.handleKeyDown}
+                     onKeyUp={this.handleKeyUp} />
             </div>
         )
     }

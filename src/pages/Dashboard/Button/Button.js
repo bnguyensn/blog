@@ -49,8 +49,10 @@ class Button extends PureComponent {
         // - Optional ${this.props.bkgColor} guidelines specified in button.css. Default = no bkgColor
         // - <MIcon/>'s color guidelines are in index.css
         // - <ButtonTooltip/> is only created if a tooltipText is passed
+        const size = this.props.size ? this.props.size : '';
+        const bkgColor = this.props.bkgColor ? this.props.bkgColor : '';
         return (
-            <div className={`btn ${this.props.size} ${this.props.bkgColor}`}
+            <div className={`btn ${size} ${bkgColor}`}
                  onMouseEnter={this.handleMouseEnter}
                  onMouseLeave={this.handleMouseLeave}
                  onClick={this.handleMouseClick}>

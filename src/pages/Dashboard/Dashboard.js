@@ -5,7 +5,7 @@ import React, {PureComponent} from 'react';
 import ControlPanel from './ControlPanel/ControlPanel';
 import ArticleEditor from './ArticleEditor/ArticleEditor';
 
-import './css/dashboard.css';
+import './dashboard.css';
 
 class Dashboard extends PureComponent {
     render() {

@@ -10,7 +10,7 @@
 /* General */
 
 .ae-section {
-    width: 40em;
+    /*width: 40em;*/
     background-color: #fafafa;  /* Grey 50 */
 }
 
@@ -30,13 +30,14 @@
 /* Body */
 
 #ae-section-body {
+    flex-grow: 1;
     padding: .5em 1em;
 }
 
 #ae-section-body > div {
     /* contenteditable element */
     box-sizing: content-box;
-    width: 100%; height: 20em;
+    width: 100%; height: 100%;
     overflow: scroll;
     overflow-wrap: break-word;
 }
@@ -50,6 +51,10 @@
 
 }
 
+#ae-section-body > div blockquote {
+    margin-top: 0; margin-bottom: 0;
+}
+
 #ae-section-body > div p.code {
     background-color: #BDBDBD;  /* Grey 400 */
 
@@ -59,6 +64,13 @@
 /** ********** ARTICLE EDITOR ********** **/
 
 #ae {
-    margin: .25em;
+    flex-grow: 1;
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    margin: .5em 1em;
+
     background-color: #424242;  /* Grey 800 */
 }
