@@ -1,0 +1,41 @@
+.lightbox-overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100vw; height: 100vh;
+
+    background-color: rgba(38, 50, 56, .75);  /* Blue Grey 900 */
+}
+
+.lightbox {
+    display: flex;
+    flex-direction: column;
+
+    width: 500px; height: 500px;
+    padding: 1em;
+
+    box-shadow: 5px 5px 20px #757575;  /* Grey 600 */
+}
+
+.lightbox-title {
+    font-size: 1.25em;
+}
+
+/** ********** BUTTON ********** */
+
+.lightbox-btn-row {
+    float: right;
+}
+
+.lightbox-btn {
+    margin: .25em .5em;
+    padding: .25em .5em;
+}
+
+.lightbox-btn:hover { background-color: #BDBDBD; }  /* Grey 400 */
+.lightbox-btn:focus { background-color: #E0E0E0; }  /* Grey 300 */
+
+.lightbox-btn.standard { color: rgba(84, 110, 122, 1); }  /* Blue Grey 600 */
+.lightbox-btn.grey { color: #616161; }  /* Grey 700 */
+.lightbox-btn.disabled { color: rgba(84, 110, 122, .3); }
