@@ -1,11 +1,16 @@
 .lightbox-overlay {
+    position: fixed;
+    top: 0; left: 0;
+
     display: flex;
     justify-content: center;
     align-items: center;
 
+    z-index: 5;
+
     width: 100vw; height: 100vh;
 
-    background-color: rgba(38, 50, 56, .75);  /* Blue Grey 900 */
+    background-color: rgba(38, 50, 56, .85);  /* Blue Grey 900 */
 }
 
 .lightbox {
@@ -15,7 +20,9 @@
     width: 500px; height: 500px;
     padding: 1em;
 
-    box-shadow: 5px 5px 20px #757575;  /* Grey 600 */
+    background-color: #fafafa;  /* Grey 50 */
+
+    box-shadow: 5px 5px 20px #263238;  /* Grey 900 */
 }
 
 .lightbox-title {
@@ -31,6 +38,9 @@
 .lightbox-btn {
     margin: .25em .5em;
     padding: .25em .5em;
+
+    user-select: none;
+    cursor: pointer;
 }
 
 .lightbox-btn:hover { background-color: #BDBDBD; }  /* Grey 400 */

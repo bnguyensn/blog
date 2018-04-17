@@ -2,6 +2,8 @@
 
 import React, {PureComponent} from 'react';
 
+import './lightbox.css';
+
 function Button(props) {
     const color = props.color ? props.color : 'standard';
 
@@ -16,24 +18,23 @@ class LightBox extends PureComponent {
     constructor(props) {
         super(props);
         this.hideLightBox = this.hideLightBox.bind(this);
-        this.state = {
-            hidden: true
-        }
     }
 
     hideLightBox(e) {
         e.stopPropagation();
-        this.setState({
-            hidden: false
-        });
+        this.props.hideLightBox();
+    }
+
+    static stopPropagation(e) {
+        e.stopPropagation();
     }
 
     render() {
-        const hidden = this.state.hidden ? 'hidden' : '';
+        const hidden = this.props.shown ? '' : 'hidden';
 
         return (
             <div className={`lightbox-overlay ${hidden}`} onClick={this.hideLightBox}>
-                <div className='lightbox'>
+                <div className='lightbox' onClick={LightBox.stopPropagation}>
                     <span className='lightbox-title'>{this.props.title}</span>
                     {this.props.children}
                 </div>
@@ -62,7 +63,7 @@ class LinkLightBox extends PureComponent {
 
     render() {
         return (
-            <LightBox title='Edit Link'>
+            <LightBox title='Edit Link' shown={this.props.shown} hideLightBox={this.props.hideLightBox}>
                 <label>
                     <span>Text to display:</span>
                     <input type='text' name='textToDisplay' value={this.state.textToDisplay}

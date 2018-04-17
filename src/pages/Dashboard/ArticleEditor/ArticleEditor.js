@@ -3,17 +3,11 @@
 import React, {PureComponent} from 'react';
 
 import Button from '../Button/Button';
+import {LinkLightBox} from "./LightBox";
 
 import './article-editor.css';
 
-function handleCreateLink() {
 
-    // Ask user which link to create
-    const linkURI = '';
-
-    // Create link
-    document.execCommand('createLink', false, linkURI);
-}
 
 function handleInsertPhoto() {
 
@@ -29,6 +23,33 @@ function handleFormat(formatCommand) {
 }
 
 class ControlPanel extends PureComponent {
+    constructor(props) {
+        super(props);
+        this.insertLink = this.insertLink.bind(this);
+        this.cancelInsertLink = this.cancelInsertLink.bind(this);
+        this.state = {
+            linkLightBoxShown: false
+        };
+    }
+
+    insertLink() {
+
+        // Ask user which link to create
+        const linkURI = '';
+        this.setState({
+            linkLightBoxShown: true
+        });
+
+        // Create link
+        document.execCommand('createLink', false, linkURI);
+    }
+
+    cancelInsertLink() {
+        this.setState({
+            linkLightBoxShown: false
+        });
+    }
+
     render() {
         return (
             <div id='ae-control-panel'>
@@ -47,9 +68,11 @@ class ControlPanel extends PureComponent {
                 <Button icon='format_list_numbered' color='light' tooltipText='Numbered list'
                         command={handleFormat} commandArg='insertOrderedList' />
                 <Button icon='insert_link' color='light' tooltipText='Insert link'
-                        command={handleCreateLink} />
+                        command={this.insertLink} />
                 <Button icon='insert_photo' color='light' tooltipText='Insert image'
                         command={handleInsertPhoto} />
+                <LinkLightBox shown={this.state.linkLightBoxShown}
+                              hideLightBox={this.cancelInsertLink} />
             </div>
         )
     }
