@@ -64,12 +64,12 @@ class LinkLightBox extends PureComponent {
     render() {
         return (
             <LightBox title='Edit Link' shown={this.props.shown} hideLightBox={this.props.hideLightBox}>
-                <label>
+                <label className='lightbox-label'>
                     <span>Text to display:</span>
                     <input type='text' name='textToDisplay' value={this.state.textToDisplay}
                            onChange={this.handleInputChange} />
                 </label>
-                <label>
+                <label className='lightbox-label'>
                     <span>Link to:</span>
                     <input type='text' name='link' value={this.state.link}
                            onChange={this.handleInputChange} />

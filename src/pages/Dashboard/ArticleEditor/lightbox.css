@@ -17,16 +17,45 @@
     display: flex;
     flex-direction: column;
 
-    width: 500px; height: 500px;
-    padding: 1em;
+    width: 40em;
+    padding: 2em;
 
     background-color: #fafafa;  /* Grey 50 */
 
     box-shadow: 5px 5px 20px #263238;  /* Grey 900 */
 }
 
+.lightbox > * {
+    margin: .25em 0;
+}
+
 .lightbox-title {
     font-size: 1.25em;
+}
+
+/** ********** LABELS ********** */
+
+.lightbox-label {
+    display: flex;
+    flex-direction: column;
+}
+
+.lightbox-label > * {
+    margin: .25em 0;
+}
+
+.lightbox-label > span {
+    color: #9E9E9E;
+}
+
+.lightbox-label > input {
+    border-style: none none solid none;
+    background-color: inherit;
+    font-size: 1em;
+}
+
+.lightbox-label > input:focus {
+    border-bottom: 2px solid #212121;
 }
 
 /** ********** BUTTON ********** */
