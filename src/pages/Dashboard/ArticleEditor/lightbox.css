@@ -45,7 +45,7 @@
 }
 
 .lightbox-label > span {
-    color: #9E9E9E;
+    color: #9E9E9E;  /* Grey 500 */
 }
 
 .lightbox-label > input {
@@ -55,7 +55,7 @@
 }
 
 .lightbox-label > input:focus {
-    border-bottom: 2px solid #212121;
+    border-bottom: 2px solid #212121;  /* Grey 900 */
 }
 
 /** ********** BUTTON ********** */
