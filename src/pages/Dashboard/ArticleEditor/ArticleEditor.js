@@ -7,7 +7,9 @@ import {LinkLightBox} from "./LightBox";
 
 import './article-editor.css';
 
-
+function getSelection() {
+    return window.getSelection().toString();
+}
 
 function handleInsertPhoto() {
 
@@ -28,7 +30,9 @@ class ControlPanel extends PureComponent {
         this.insertLink = this.insertLink.bind(this);
         this.cancelInsertLink = this.cancelInsertLink.bind(this);
         this.state = {
-            linkLightBoxShown: false
+            linkLightBoxShown: false,
+            linkLightBoxTTD: '',  // LinkLightBoxTextToDisplay
+            currentSelection: ''
         };
     }
 
@@ -41,7 +45,7 @@ class ControlPanel extends PureComponent {
         });
 
         // Create link
-        document.execCommand('createLink', false, linkURI);
+        // document.execCommand('createLink', false, linkURI);
     }
 
     cancelInsertLink() {

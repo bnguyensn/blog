@@ -21,7 +21,7 @@ class LightBox extends PureComponent {
     }
 
     hideLightBox(e) {
-        e.stopPropagation();
+        e.stopPropagation(e);
         this.props.hideLightBox();
     }
 
@@ -61,23 +61,37 @@ class LinkLightBox extends PureComponent {
         });
     }
 
+    static getDerivedStateFromProps(nextProps, prevState) {
+        if (nextProps.shown === true) {
+            return {
+                textToDisplay: window.getSelection().toString()
+            }
+        }
+
+        return null
+    }
+
     render() {
         return (
             <LightBox title='Edit Link' shown={this.props.shown} hideLightBox={this.props.hideLightBox}>
+
                 <label className='lightbox-label'>
                     <span>Text to display:</span>
                     <input type='text' name='textToDisplay' value={this.state.textToDisplay}
                            onChange={this.handleInputChange} />
                 </label>
+
                 <label className='lightbox-label'>
                     <span>Link to:</span>
                     <input type='text' name='link' value={this.state.link}
                            onChange={this.handleInputChange} />
                 </label>
+
                 <div className='lightbox-btn-row'>
                     <Button text='CANCEL' color='grey' />
                     <Button text='OK' />
                 </div>
+
             </LightBox>
         )
     }
