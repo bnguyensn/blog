@@ -27,16 +27,17 @@ function handleFormat(formatCommand) {
 class ControlPanel extends PureComponent {
     constructor(props) {
         super(props);
+        this.showLinkLightBox = this.showLinkLightBox.bind(this);
+        this.hideLinkLightBox = this.hideLinkLightBox.bind(this);
         this.insertLink = this.insertLink.bind(this);
-        this.cancelInsertLink = this.cancelInsertLink.bind(this);
         this.state = {
             linkLightBoxShown: false,
-            linkLightBoxTTD: '',  // LinkLightBoxTextToDisplay
+
             currentSelection: ''
         };
     }
 
-    insertLink() {
+    showLinkLightBox() {
 
         // Ask user which link to create
         const linkURI = '';
@@ -48,10 +49,14 @@ class ControlPanel extends PureComponent {
         // document.execCommand('createLink', false, linkURI);
     }
 
-    cancelInsertLink() {
+    hideLinkLightBox() {
         this.setState({
             linkLightBoxShown: false
         });
+    }
+
+    insertLink(textToDisplay, link) {
+        document.execCommand('createLink', false, link);
     }
 
     render() {
@@ -72,11 +77,11 @@ class ControlPanel extends PureComponent {
                 <Button icon='format_list_numbered' color='light' tooltipText='Numbered list'
                         command={handleFormat} commandArg='insertOrderedList' />
                 <Button icon='insert_link' color='light' tooltipText='Insert link'
-                        command={this.insertLink} />
+                        command={this.showLinkLightBox} />
                 <Button icon='insert_photo' color='light' tooltipText='Insert image'
                         command={handleInsertPhoto} />
                 <LinkLightBox shown={this.state.linkLightBoxShown}
-                              hideLightBox={this.cancelInsertLink} />
+                              hideLightBox={this.hideLinkLightBox} />
             </div>
         )
     }

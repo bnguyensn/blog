@@ -18,7 +18,7 @@
     flex-direction: column;
 
     width: 40em;
-    padding: 2em;
+    padding: 1em 2em;
 
     background-color: #fafafa;  /* Grey 50 */
 
@@ -26,7 +26,7 @@
 }
 
 .lightbox > * {
-    margin: .25em 0;
+    margin: .5em 0;
 }
 
 .lightbox-title {
@@ -61,7 +61,7 @@
 /** ********** BUTTON ********** */
 
 .lightbox-btn-row {
-    padding: 1em;
+    padding: .5em;
     text-align: right;
 }
 
@@ -70,6 +70,8 @@
 
     margin: .25em .5em;
     padding: .5em 1em;
+
+    font-weight: bold;
 
     border-radius: 4px;
 
@@ -80,6 +82,6 @@
 .lightbox-btn:hover { background-color: #EEEEEE; }  /* Grey 200 */
 .lightbox-btn:active { background-color: #E0E0E0; }  /* Grey 300 */
 
-.lightbox-btn.standard { color: rgba(84, 110, 122, 1); }  /* Blue Grey 600 */
-.lightbox-btn.grey { color: #616161; }  /* Grey 700 */
+.lightbox-btn.standard { color: rgba(71, 103, 85, 1); }  /* From Paletton */
+.lightbox-btn.grey { color: #9E9E9E; }  /* Grey 500 */
 .lightbox-btn.disabled { color: rgba(84, 110, 122, .3); }
