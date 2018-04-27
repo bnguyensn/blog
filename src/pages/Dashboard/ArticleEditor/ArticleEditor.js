@@ -11,6 +11,20 @@ function getSelection() {
     return window.getSelection().toString();
 }
 
+function getCaretPosition(editableDiv) {
+    if (window.getSelection) {
+        const sel = window.getSelection();
+        if (sel.rangeCount) {
+            const range = sel.getRangeAt(0);
+            if (range.commonAncestorContainer.parentNode === editableDiv) {
+                return range.endOffset;
+            }
+        }
+    }
+
+    return 0
+}
+
 function handleInsertPhoto() {
 
     // Ask user which photo to insert
@@ -56,7 +70,9 @@ class ControlPanel extends PureComponent {
     }
 
     insertLink(textToDisplay, link) {
-        document.execCommand('createLink', false, link);
+        const caretPos = getCaretPosition()
+
+        //document.execCommand('createLink', false, link);
     }
 
     render() {
@@ -81,7 +97,8 @@ class ControlPanel extends PureComponent {
                 <Button icon='insert_photo' color='light' tooltipText='Insert image'
                         command={handleInsertPhoto} />
                 <LinkLightBox shown={this.state.linkLightBoxShown}
-                              hideLightBox={this.hideLinkLightBox} />
+                              hideLightBox={this.hideLinkLightBox}
+                              insertLink={this.insertLink} />
             </div>
         )
     }

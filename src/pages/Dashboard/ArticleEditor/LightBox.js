@@ -8,7 +8,7 @@ function Button(props) {
     const color = props.color ? props.color : 'standard';
 
     return (
-        <div className={`lightbox-btn ${color}`}>
+        <div className={`lightbox-btn ${color}`} onClick={props.handleClick}>
             {props.text}
         </div>
     )
@@ -43,10 +43,13 @@ class LightBox extends PureComponent {
     }
 }
 
+/** ********** LINK LIGHTBOX ********** **/
+
 class LinkLightBox extends PureComponent {
     constructor(props) {
         super(props);
         this.handleInputChange = this.handleInputChange.bind(this);
+        this.insertLink = this.insertLink.bind(this);
         this.state = {
             textToDisplay: '',
             link: ''
@@ -71,25 +74,41 @@ class LinkLightBox extends PureComponent {
         return null
     }
 
+    insertLink() {
+        if (this.state.textToDisplay && this.state.link) {
+            this.props.hideLightBox();
+            this.props.insertLink(this.state.textToDisplay, this.state.link);
+        }
+    }
+
     render() {
         return (
-            <LightBox title='Edit Link' shown={this.props.shown} hideLightBox={this.props.hideLightBox}>
+            <LightBox title='Edit Link'
+                      shown={this.props.shown}
+                      hideLightBox={this.props.hideLightBox}>
 
                 <label className='lightbox-label'>
                     <span>Text to display:</span>
-                    <input type='text' name='textToDisplay' value={this.state.textToDisplay}
+                    <input type='text'
+                           name='textToDisplay'
+                           value={this.state.textToDisplay}
                            onChange={this.handleInputChange} />
                 </label>
 
                 <label className='lightbox-label'>
                     <span>Link to:</span>
-                    <input type='text' name='link' value={this.state.link}
+                    <input type='text'
+                           name='link'
+                           value={this.state.link}
                            onChange={this.handleInputChange} />
                 </label>
 
                 <div className='lightbox-btn-row'>
-                    <Button text='CANCEL' color='grey' />
-                    <Button text='OK' />
+                    <Button text='CANCEL'
+                            color='grey'
+                            handleClick={this.props.hideLightBox} />
+                    <Button text='OK'
+                            handleClick={this.insertLink} />
                 </div>
 
             </LightBox>
