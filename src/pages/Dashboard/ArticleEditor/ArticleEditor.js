@@ -7,8 +7,14 @@ import {LinkLightBox} from "./LightBox";
 
 import './article-editor.css';
 
-function getSelection() {
-    return window.getSelection().toString();
+import {insertLinkAtRange} from "./dom-insertion";
+
+function getRange() {
+    const selection = window.getSelection();
+    if (selection && selection.rangeCount) {
+        return selection.getRangeAt(0);
+    }
+    return null
 }
 
 function getCaretPosition(editableDiv) {
@@ -41,26 +47,25 @@ function handleFormat(formatCommand) {
 class ControlPanel extends PureComponent {
     constructor(props) {
         super(props);
-        this.showLinkLightBox = this.showLinkLightBox.bind(this);
+        this.startLinkProcess = this.startLinkProcess.bind(this);
+        this.endLinkProcess = this.endLinkProcess.bind(this);
         this.hideLinkLightBox = this.hideLinkLightBox.bind(this);
         this.insertLink = this.insertLink.bind(this);
         this.state = {
             linkLightBoxShown: false,
-
-            currentSelection: ''
+            currentRange: null,
         };
     }
 
-    showLinkLightBox() {
-
-        // Ask user which link to create
-        const linkURI = '';
+    startLinkProcess() {
         this.setState({
-            linkLightBoxShown: true
+            linkLightBoxShown: true,
+            currentRange: getRange()
         });
+    }
 
-        // Create link
-        // document.execCommand('createLink', false, linkURI);
+    endLinkProcess() {
+
     }
 
     hideLinkLightBox() {
@@ -70,9 +75,7 @@ class ControlPanel extends PureComponent {
     }
 
     insertLink(textToDisplay, link) {
-        const caretPos = getCaretPosition()
-
-        //document.execCommand('createLink', false, link);
+        insertLinkAtRange(this.state.currentRange, textToDisplay, link);
     }
 
     render() {
@@ -93,9 +96,10 @@ class ControlPanel extends PureComponent {
                 <Button icon='format_list_numbered' color='light' tooltipText='Numbered list'
                         command={handleFormat} commandArg='insertOrderedList' />
                 <Button icon='insert_link' color='light' tooltipText='Insert link'
-                        command={this.showLinkLightBox} />
+                        command={this.startLinkProcess} />
                 <Button icon='insert_photo' color='light' tooltipText='Insert image'
                         command={handleInsertPhoto} />
+
                 <LinkLightBox shown={this.state.linkLightBoxShown}
                               hideLightBox={this.hideLinkLightBox}
                               insertLink={this.insertLink} />
@@ -144,14 +148,11 @@ class BodySection extends PureComponent {
 
     handleKeyDown(e) {
         switch (e.keyCode) {
-            case 32:
-                console.log('Spacebar');
-                break;
-            case 9:
+            case 9:  // Tab
                 e.preventDefault();
                 this.state.shiftPressed ? handleFormat('outdent') : handleFormat('indent');
                 break;
-            case 16:
+            case 16:  // Shift
                 this.setState({
                     shiftPressed: true
                 });
@@ -161,7 +162,7 @@ class BodySection extends PureComponent {
 
     handleKeyUp(e) {
         switch (e.keyCode) {
-            case 16:
+            case 16:  // Shift
                 this.setState({
                     shiftPressed: false
                 });

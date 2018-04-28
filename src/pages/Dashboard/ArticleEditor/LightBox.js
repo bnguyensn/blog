@@ -56,22 +56,23 @@ class LinkLightBox extends PureComponent {
         }
     }
 
+    static getDerivedStateFromProps(nextProps, prevState) {
+        if (nextProps.shown === true) {
+            return {
+                textToDisplay: window.getSelection().toString(),
+                link: ''
+            }
+        }
+
+        return null
+    }
+
     handleInputChange(e) {
         const name = e.target.name;
         const value = e.target.value;
         this.setState({
             [name]: value
         });
-    }
-
-    static getDerivedStateFromProps(nextProps, prevState) {
-        if (nextProps.shown === true) {
-            return {
-                textToDisplay: window.getSelection().toString()
-            }
-        }
-
-        return null
     }
 
     insertLink() {
