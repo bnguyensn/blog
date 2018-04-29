@@ -85,3 +85,24 @@
 .lightbox-btn.standard { color: rgba(71, 103, 85, 1); }  /* From Paletton */
 .lightbox-btn.grey { color: #9E9E9E; }  /* Grey 500 */
 .lightbox-btn.disabled { color: rgba(84, 110, 122, .3); }
+
+/** ********** IMAGE LIGHTBOX ********** **/
+
+.img-lightbox-file-dragndrop {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: .5em;
+    height: 20em;
+
+    background-color: #9E9E9E;
+}
+
+.img-lightbox-file-dragndrop > label {
+    display: block;
+    padding: 1em;
+    background-color: #03A9F4;
+    cursor: pointer;
+    user-select: none;
+}

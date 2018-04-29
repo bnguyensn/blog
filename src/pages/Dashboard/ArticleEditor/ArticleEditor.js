@@ -3,7 +3,7 @@
 import React, {PureComponent} from 'react';
 
 import Button from '../Button/Button';
-import {LinkLightBox} from "./LightBox";
+import {LinkLightBox, ImageLightBox} from "./LightBox";
 
 import './article-editor.css';
 
@@ -51,9 +51,13 @@ class ControlPanel extends PureComponent {
         this.endLinkProcess = this.endLinkProcess.bind(this);
         this.hideLinkLightBox = this.hideLinkLightBox.bind(this);
         this.insertLink = this.insertLink.bind(this);
+        this.startImageProcess = this.startImageProcess.bind(this);
+        this.hideImageLightBox = this.hideImageLightBox.bind(this);
+        this.insertImage = this.insertImage.bind(this);
         this.state = {
             linkLightBoxShown: false,
             currentRange: null,
+            imageLightBoxShown: false,
         };
     }
 
@@ -78,6 +82,22 @@ class ControlPanel extends PureComponent {
         insertLinkAtRange(this.state.currentRange, textToDisplay, link);
     }
 
+    startImageProcess() {
+        this.setState({
+            imageLightBoxShown: true
+        });
+    }
+
+    hideImageLightBox() {
+        this.setState({
+            imageLightBoxShown: false
+        });
+    }
+
+    insertImage() {
+
+    }
+
     render() {
         return (
             <div id='ae-control-panel'>
@@ -98,11 +118,14 @@ class ControlPanel extends PureComponent {
                 <Button icon='insert_link' color='light' tooltipText='Insert link'
                         command={this.startLinkProcess} />
                 <Button icon='insert_photo' color='light' tooltipText='Insert image'
-                        command={handleInsertPhoto} />
+                        command={this.startImageProcess} />
 
                 <LinkLightBox shown={this.state.linkLightBoxShown}
                               hideLightBox={this.hideLinkLightBox}
                               insertLink={this.insertLink} />
+                <ImageLightBox shown={this.state.imageLightBoxShown}
+                               hideLightBox={this.hideImageLightBox}
+                               insertImage={this.insertImage} />
             </div>
         )
     }

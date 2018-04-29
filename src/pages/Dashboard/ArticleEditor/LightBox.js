@@ -37,6 +37,13 @@ class LightBox extends PureComponent {
                 <div className='lightbox' onClick={LightBox.stopPropagation}>
                     <span className='lightbox-title'>{this.props.title}</span>
                     {this.props.children}
+                    <div className='lightbox-btn-row'>
+                        <Button text='CANCEL'
+                                color='grey'
+                                handleClick={this.props.hideLightBox} />
+                        <Button text='OK'
+                                handleClick={this.processCommand} />
+                    </div>
                 </div>
             </div>
         )
@@ -86,7 +93,8 @@ class LinkLightBox extends PureComponent {
         return (
             <LightBox title='Edit Link'
                       shown={this.props.shown}
-                      hideLightBox={this.props.hideLightBox}>
+                      hideLightBox={this.props.hideLightBox}
+                      processCommand={this.insertLink}>
 
                 <label className='lightbox-label'>
                     <span>Text to display:</span>
@@ -104,12 +112,64 @@ class LinkLightBox extends PureComponent {
                            onChange={this.handleInputChange} />
                 </label>
 
-                <div className='lightbox-btn-row'>
-                    <Button text='CANCEL'
-                            color='grey'
-                            handleClick={this.props.hideLightBox} />
-                    <Button text='OK'
-                            handleClick={this.insertLink} />
+            </LightBox>
+        )
+    }
+}
+
+/** ********** IMAGE LIGHTBOX ********** **/
+
+class ImageLightBox extends PureComponent {
+    constructor(props) {
+        super(props);
+        //this.dragenter = this.dragenter.bind(this);
+        //this.dragover = this.dragover.bind(this);
+        this.drop = this.drop.bind(this);
+        this.handleFiles = this.handleFiles.bind(this);
+    }
+
+    static dragenter(e) {
+        e.stopPropagation();
+        e.preventDefault();
+    }
+
+    static dragover(e) {
+        e.stopPropagation();
+        e.preventDefault();
+    }
+
+    drop(e) {
+        e.stopPropagation();
+        e.preventDefault();
+
+        const dataTransfer = e.dataTransfer;
+        const files = dataTransfer.files;
+
+        this.handleFiles(files);
+    }
+
+    handleFiles(files) {
+
+    }
+
+    render() {
+        return (
+            <LightBox title='Insert Image'
+                      shown={this.props.shown}
+                      hideLightBox={this.props.hideLightBox}>
+
+                <div className='img-lightbox-file-dragndrop'
+                     onDragEnter={ImageLightBox.dragenter}
+                     onDragOver={ImageLightBox.dragover}
+                     onDrop={this.drop}>
+
+                    <label htmlFor='img-lightbox-file-input'>SELECT IMAGE</label>
+                    <input className='hidden'
+                           id='img-lightbox-file-input'
+                           type='file'
+                           multiple
+                           accept='image/*' />
+
                 </div>
 
             </LightBox>
@@ -118,5 +178,6 @@ class LinkLightBox extends PureComponent {
 }
 
 export {
-    LinkLightBox
+    LinkLightBox,
+    ImageLightBox
 };
