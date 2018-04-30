@@ -2,7 +2,7 @@
 
 import React, {PureComponent} from 'react';
 
-import Button from '../Button/Button';
+import Button from '../../Components/Button/Button';
 
 import './control-panel.css';
 

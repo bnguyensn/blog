@@ -14,7 +14,7 @@ function Button(props) {
     )
 }
 
-class LightBox extends PureComponent {
+class Lightbox extends PureComponent {
     constructor(props) {
         super(props);
         this.hideLightBox = this.hideLightBox.bind(this);
@@ -34,7 +34,7 @@ class LightBox extends PureComponent {
 
         return (
             <div className={`lightbox-overlay ${hidden}`} onClick={this.hideLightBox}>
-                <div className='lightbox' onClick={LightBox.stopPropagation}>
+                <div className='lightbox' onClick={Lightbox.stopPropagation}>
                     <span className='lightbox-title'>{this.props.title}</span>
                     {this.props.children}
                     <div className='lightbox-btn-row'>
@@ -91,7 +91,7 @@ class LinkLightBox extends PureComponent {
 
     render() {
         return (
-            <LightBox title='Edit Link'
+            <Lightbox title='Edit Link'
                       shown={this.props.shown}
                       hideLightBox={this.props.hideLightBox}
                       processCommand={this.insertLink}>
@@ -112,7 +112,7 @@ class LinkLightBox extends PureComponent {
                            onChange={this.handleInputChange} />
                 </label>
 
-            </LightBox>
+            </Lightbox>
         )
     }
 }
@@ -154,7 +154,7 @@ class ImageLightBox extends PureComponent {
 
     render() {
         return (
-            <LightBox title='Insert Image'
+            <Lightbox title='Insert Image'
                       shown={this.props.shown}
                       hideLightBox={this.props.hideLightBox}>
 
@@ -172,7 +172,7 @@ class ImageLightBox extends PureComponent {
 
                 </div>
 
-            </LightBox>
+            </Lightbox>
         )
     }
 }

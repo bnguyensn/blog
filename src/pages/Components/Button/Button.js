@@ -2,7 +2,7 @@
 
 import React, {PureComponent} from 'react';
 
-import MIcon from './MIcon';
+import MIcon from '../MIcon';
 
 import './button.css';
 

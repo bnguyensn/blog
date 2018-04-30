@@ -2,12 +2,12 @@
 
 import React, {PureComponent} from 'react';
 
-import Button from '../Button/Button';
-import {LinkLightBox, ImageLightBox} from "./LightBox";
+import Button from '../../Components/Button/Button';
+import {LinkLightBox, ImageLightBox} from "./Components/Lightbox";
 
 import './article-editor.css';
 
-import {insertLinkAtRange} from "./dom-insertion";
+import {insertLinkAtRange} from "../../../js/dom-insertion";
 
 function getRange() {
     const selection = window.getSelection();
@@ -40,9 +40,7 @@ function handleInsertPhoto() {
     document.execCommand('insertImage', false, photoURI);
 }
 
-function handleFormat(formatCommand) {
-    document.execCommand(formatCommand, false, null);
-}
+
 
 class ControlPanel extends PureComponent {
     constructor(props) {
