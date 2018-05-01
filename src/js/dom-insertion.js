@@ -27,6 +27,20 @@ function insertLinkAtRange(range, textToDisplay, link) {
     }
 }
 
+function getCaretPosition(editableDiv) {
+    if (window.getSelection) {
+        const sel = window.getSelection();
+        if (sel.rangeCount) {
+            const range = sel.getRangeAt(0);
+            if (range.commonAncestorContainer.parentNode === editableDiv) {
+                return range.endOffset;
+            }
+        }
+    }
+
+    return 0
+}
+
 export {
     insertLinkAtRange
 }

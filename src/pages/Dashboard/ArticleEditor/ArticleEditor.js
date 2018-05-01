@@ -8,6 +8,7 @@ import {LinkLightBox, ImageLightBox} from "./Components/Lightbox";
 import './article-editor.css';
 
 import {insertLinkAtRange} from "../../../js/dom-insertion";
+import handleFormat from '../../../js/handleFormat';
 
 function getRange() {
     const selection = window.getSelection();
@@ -17,28 +18,7 @@ function getRange() {
     return null
 }
 
-function getCaretPosition(editableDiv) {
-    if (window.getSelection) {
-        const sel = window.getSelection();
-        if (sel.rangeCount) {
-            const range = sel.getRangeAt(0);
-            if (range.commonAncestorContainer.parentNode === editableDiv) {
-                return range.endOffset;
-            }
-        }
-    }
 
-    return 0
-}
-
-function handleInsertPhoto() {
-
-    // Ask user which photo to insert
-    const photoURI = '';
-
-    // Insert photo
-    document.execCommand('insertImage', false, photoURI);
-}
 
 
 

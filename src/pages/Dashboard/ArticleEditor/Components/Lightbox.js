@@ -38,8 +38,7 @@ class Lightbox extends PureComponent {
                     <span className='lightbox-title'>{this.props.title}</span>
                     {this.props.children}
                     <div className='lightbox-btn-row'>
-                        <Button text='CANCEL'
-                                color='grey'
+                        <Button text='CANCEL' color='grey'
                                 handleClick={this.props.hideLightBox} />
                         <Button text='OK'
                                 handleClick={this.processCommand} />
@@ -91,23 +90,20 @@ class LinkLightBox extends PureComponent {
 
     render() {
         return (
-            <Lightbox title='Edit Link'
-                      shown={this.props.shown}
+            <Lightbox title='Edit Link' shown={this.props.shown}
                       hideLightBox={this.props.hideLightBox}
                       processCommand={this.insertLink}>
 
                 <label className='lightbox-label'>
                     <span>Text to display:</span>
-                    <input type='text'
-                           name='textToDisplay'
+                    <input type='text' name='textToDisplay'
                            value={this.state.textToDisplay}
                            onChange={this.handleInputChange} />
                 </label>
 
                 <label className='lightbox-label'>
                     <span>Link to:</span>
-                    <input type='text'
-                           name='link'
+                    <input type='text' name='link'
                            value={this.state.link}
                            onChange={this.handleInputChange} />
                 </label>
@@ -122,8 +118,6 @@ class LinkLightBox extends PureComponent {
 class ImageLightBox extends PureComponent {
     constructor(props) {
         super(props);
-        //this.dragenter = this.dragenter.bind(this);
-        //this.dragover = this.dragover.bind(this);
         this.drop = this.drop.bind(this);
         this.handleFiles = this.handleFiles.bind(this);
     }
@@ -154,8 +148,7 @@ class ImageLightBox extends PureComponent {
 
     render() {
         return (
-            <Lightbox title='Insert Image'
-                      shown={this.props.shown}
+            <Lightbox title='Insert Image' shown={this.props.shown}
                       hideLightBox={this.props.hideLightBox}>
 
                 <div className='img-lightbox-file-dragndrop'
@@ -164,11 +157,8 @@ class ImageLightBox extends PureComponent {
                      onDrop={this.drop}>
 
                     <label htmlFor='img-lightbox-file-input'>SELECT IMAGE</label>
-                    <input className='hidden'
-                           id='img-lightbox-file-input'
-                           type='file'
-                           multiple
-                           accept='image/*' />
+                    <input className='hidden' id='img-lightbox-file-input'
+                           type='file' multiple accept='image/*' />
 
                 </div>
 
