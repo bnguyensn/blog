@@ -86,34 +86,33 @@ h1 {
     }
 }
 
-/* ********** EXTERNAL SNIPPETS ********** */
+/* ********** MATERIAL ICONS ********** */
 
-/* ***** My material icon rules ***** */
+/* ***** Icon container ***** */
 
 .micon { display: flex; align-items: center; font-size: inherit; }
-svg.msvg-24 { width: 24px; height: 24px; }
-svg.msvg-36 { width: 36px; height: 36px; }
+.material-icons { font-size: inherit; }
 
 /* ***** Google's material icon guidelines ***** */
 
 /* Rules for sizing the icon */
-.material-icons { font-size: inherit; }
 .material-icons.md-18 { font-size: 18px; }
-.material-icons.md-24 { font-size: 24px; }
-.material-icons.md-36 { font-size: 36px; }
-.material-icons.md-48 { font-size: 48px; }
+.material-icons.md-075em { font-size: .75em; }
 
 /* Rules for using icons as black on a light background */
-.material-icons.dark { color: rgba(0, 0, 0, 0.75); }
-.material-icons.dark.md-inactive { color: rgba(0, 0, 0, 0.26); }
+.material-icons.dark { color: rgba(0, 0, 0, .75); }
+.material-icons.dark.md-inactive { color: rgba(0, 0, 0, .26); }
 
 /* Rules for using icons as white on a dark background */
 .material-icons.light { color: rgba(255, 255, 255, 1); }
-.material-icons.light.md-inactive { color: rgba(255, 255, 255, 0.3); }
+.material-icons.light.md-inactive { color: rgba(255, 255, 255, .3); }
 
-/* ***** My custom colouring rules ***** */
-path.msvg-grey { fill: #BDBDBD; }  /* Grey 400 */
-
-
-.material-icons.grey100 { color: #F5F5F5; }
+/* Rules for various other colors */
 .material-icons.c648572 { color: #648572; }
+
+/* ***** SVG icons ***** */
+
+svg.msvg-24 { width: 24px; height: 24px; }
+svg.msvg-36 { width: 36px; height: 36px; }
+
+path.msvg-grey { fill: #BDBDBD; }  /* Grey 400 */

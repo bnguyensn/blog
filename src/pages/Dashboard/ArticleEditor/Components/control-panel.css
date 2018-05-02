@@ -1,4 +1,14 @@
-.btn {
+/** ********** ARTICLE EDITOR'S CONTROL PANEL ********** **/
+
+#ae-control-panel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/** ********** ARTICLE EDITOR'S CONTROL PANEL BUTTONS ********** **/
+
+.cp-btn {
     position: relative;
 
     display: flex;
@@ -11,12 +21,7 @@
     cursor: pointer;
 }
 
-.btn.large { font-size: 200%; }
-.btn.x-large { font-size: 400%; }
-
-.btn.green600 { background-color: #43A047 }
-
-.btn-tt {
+.cp-btn-tt {
     position: absolute;
     bottom: 2.75em;
 

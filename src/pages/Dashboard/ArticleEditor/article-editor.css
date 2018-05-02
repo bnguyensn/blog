@@ -1,67 +1,4 @@
-/** ********** CONTROL PANEL ********** **/
-
-#ae-control-panel {
-    display: flex;
-    justify-content: center;
-}
-
-/** ********** SECTION ********** **/
-
-/* General */
-
-.ae-section {
-    /*width: 40em;*/
-    background-color: #fafafa;  /* Grey 50 */
-}
-
-/* Title */
-
-#ae-section-title {
-    padding: .4em 0.8em;
-}
-
-#ae-section-title > input {
-    border: 0;
-    width: 100%;
-    padding: 0;
-    font-size: 1.25em;
-}
-
-/* Body */
-
-#ae-section-body {
-    flex-grow: 1;
-    padding: .5em 1em;
-}
-
-#ae-section-body > div {
-    /* contenteditable element */
-    box-sizing: content-box;
-    width: 100%; height: 100%;
-    overflow: scroll;
-    overflow-wrap: break-word;
-}
-
-#ae-section-body > div:focus {
-    /* contenteditable element */
-    outline: 0;
-}
-
-#ae-section-body > div p {
-
-}
-
-#ae-section-body > div blockquote {
-    margin-top: 0; margin-bottom: 0;
-}
-
-#ae-section-body > div p.code {
-    background-color: #BDBDBD;  /* Grey 400 */
-
-    font-family: 'PT Mono', monospace;
-}
-
-/** ********** ARTICLE EDITOR ********** **/
+/** ********** ARTICLE EDITOR GENERAL ********** **/
 
 #ae {
     flex-grow: 1;
@@ -73,4 +10,51 @@
     margin: .5em 1em;
 
     background-color: #424242;  /* Grey 800 */
+}
+
+.ae-section {
+    /*width: 40em;*/
+    background-color: #fafafa;  /* Grey 50 */
+}
+#ae-section-title {
+    padding: .4em 0.8em;
+}
+
+#ae-section-title > input {
+    border: 0;
+    width: 100%;
+    padding: 0;
+    font-size: 1.25em;
+}
+
+/** ********** ARTICLE EDITOR BODY SECTION ********** **/
+
+#ae-section-body {
+    flex-grow: 1;
+    padding: .5em 1em;
+}
+
+#ae-section-body-editable {
+    box-sizing: content-box;
+    width: 100%; height: 100%;
+    overflow: scroll;
+    overflow-wrap: break-word;
+}
+
+#ae-section-body-editable:focus {
+    outline: 0;
+}
+
+#ae-section-body-editable p {
+
+}
+
+#ae-section-body-editable blockquote {
+    margin-top: 0; margin-bottom: 0;
+}
+
+#ae-section-body-editable p.code {
+    background-color: #BDBDBD;  /* Grey 400 */
+
+    font-family: 'PT Mono', monospace;
 }

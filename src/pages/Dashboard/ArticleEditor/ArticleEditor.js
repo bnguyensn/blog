@@ -174,7 +174,7 @@ class BodySection extends PureComponent {
     render() {
         return (
             <div id='ae-section-body' className='ae-section'>
-                <div contentEditable
+                <div id='ae-section-body-editable' contentEditable
                      onKeyDown={this.handleKeyDown}
                      onKeyUp={this.handleKeyUp} />
             </div>

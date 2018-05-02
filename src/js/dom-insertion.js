@@ -41,6 +41,15 @@ function getCaretPosition(editableDiv) {
     return 0
 }
 
+function getRange() {
+    const selection = window.getSelection();
+    if (selection && selection.rangeCount) {
+        return selection.getRangeAt(0);
+    }
+    return null
+}
+
 export {
-    insertLinkAtRange
+    insertLinkAtRange,
+    getRange
 }
