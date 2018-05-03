@@ -2,7 +2,7 @@
 
 import React, {PureComponent} from 'react';
 
-import {LinkLightBox, ImageLightBox} from './Lightbox';
+import {LinkLightbox, ImageLightbox} from './Lightbox';
 import MIcon from '../../../Components/MIcon';
 
 import {insertLinkAtRange, getRange} from '../../../../js/dom-insertion';
@@ -71,34 +71,40 @@ class Button extends PureComponent {
 class ControlPanel extends PureComponent {
     constructor(props) {
         super(props);
+
+        // Lightbox
+        this.hideLightbox = this.hideLightbox.bind(this);
+        // Link methods
         this.startLinkProcess = this.startLinkProcess.bind(this);
-        this.endLinkProcess = this.endLinkProcess.bind(this);
-        this.hideLinkLightBox = this.hideLinkLightBox.bind(this);
         this.insertLink = this.insertLink.bind(this);
+        // Image methods
         this.startImageProcess = this.startImageProcess.bind(this);
-        this.hideImageLightBox = this.hideImageLightBox.bind(this);
-        this.insertImage = this.insertImage.bind(this);
+
         this.state = {
-            linkLightBoxShown: false,
             currentRange: null,
-            imageLightBoxShown: false,
+            linkLightboxShown: false,
+            imageLightboxShown: false,
         };
+
+
+        this.endLinkProcess = this.endLinkProcess.bind(this);
+
     }
+
+    // Lightbox method
+
+    hideLightbox(lightboxName) {
+        this.setState({
+            [`${lightboxName}Shown`]: false
+        })
+    }
+
+    // Insert link methods
 
     startLinkProcess() {
         this.setState({
-            linkLightBoxShown: true,
+            linkLightboxShown: true,
             currentRange: getRange()
-        });
-    }
-
-    endLinkProcess() {
-
-    }
-
-    hideLinkLightBox() {
-        this.setState({
-            linkLightBoxShown: false
         });
     }
 
@@ -106,20 +112,12 @@ class ControlPanel extends PureComponent {
         insertLinkAtRange(this.state.currentRange, textToDisplay, link);
     }
 
+    // Insert image methods
+
     startImageProcess() {
         this.setState({
-            imageLightBoxShown: true
+            imageLightboxShown: true
         });
-    }
-
-    hideImageLightBox() {
-        this.setState({
-            imageLightBoxShown: false
-        });
-    }
-
-    insertImage() {
-
     }
 
     render() {
@@ -158,11 +156,11 @@ class ControlPanel extends PureComponent {
                 <Button icon='insert_photo' tooltipText='Insert image'
                         handleClick={this.startImageProcess} />
 
-                <LinkLightBox shown={this.state.linkLightBoxShown}
-                              hideLightBox={this.hideLinkLightBox}
+                <LinkLightbox shown={this.state.linkLightboxShown}
+                              hideLightbox={this.hideLightbox}
                               insertLink={this.insertLink} />
-                <ImageLightBox shown={this.state.imageLightBoxShown}
-                               hideLightBox={this.hideImageLightBox}
+                <ImageLightbox shown={this.state.imageLightboxShown}
+                               hideLightbox={this.hideLightbox}
                                insertImage={this.insertImage} />
             </div>
         )

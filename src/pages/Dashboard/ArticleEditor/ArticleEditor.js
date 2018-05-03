@@ -3,7 +3,7 @@
 import React, {PureComponent} from 'react';
 
 import Button from '../../Components/Button/Button';
-import {LinkLightBox, ImageLightBox} from "./Components/Lightbox";
+import {LinkLightbox, ImageLightbox} from "./Components/Lightbox";
 
 import './article-editor.css';
 
@@ -27,21 +27,21 @@ class ControlPanel extends PureComponent {
         super(props);
         this.startLinkProcess = this.startLinkProcess.bind(this);
         this.endLinkProcess = this.endLinkProcess.bind(this);
-        this.hideLinkLightBox = this.hideLinkLightBox.bind(this);
+        this.hideLinkLightbox = this.hideLinkLightBox.bind(this);
         this.insertLink = this.insertLink.bind(this);
         this.startImageProcess = this.startImageProcess.bind(this);
-        this.hideImageLightBox = this.hideImageLightBox.bind(this);
+        this.hideImageLightbox = this.hideImageLightBox.bind(this);
         this.insertImage = this.insertImage.bind(this);
         this.state = {
-            linkLightBoxShown: false,
+            linkLightboxShown: false,
             currentRange: null,
-            imageLightBoxShown: false,
+            imageLightboxShown: false,
         };
     }
 
     startLinkProcess() {
         this.setState({
-            linkLightBoxShown: true,
+            linkLightboxShown: true,
             currentRange: getRange()
         });
     }
@@ -52,7 +52,7 @@ class ControlPanel extends PureComponent {
 
     hideLinkLightBox() {
         this.setState({
-            linkLightBoxShown: false
+            linkLightboxShown: false
         });
     }
 
@@ -62,13 +62,13 @@ class ControlPanel extends PureComponent {
 
     startImageProcess() {
         this.setState({
-            imageLightBoxShown: true
+            imageLightboxShown: true
         });
     }
 
     hideImageLightBox() {
         this.setState({
-            imageLightBoxShown: false
+            imageLightboxShown: false
         });
     }
 
@@ -98,10 +98,10 @@ class ControlPanel extends PureComponent {
                 <Button icon='insert_photo' color='light' tooltipText='Insert image'
                         command={this.startImageProcess} />
 
-                <LinkLightBox shown={this.state.linkLightBoxShown}
+                <LinkLightbox shown={this.state.linkLightboxShown}
                               hideLightBox={this.hideLinkLightBox}
                               insertLink={this.insertLink} />
-                <ImageLightBox shown={this.state.imageLightBoxShown}
+                <ImageLightbox shown={this.state.imageLightboxShown}
                                hideLightBox={this.hideImageLightBox}
                                insertImage={this.insertImage} />
             </div>

@@ -6,7 +6,6 @@ import './lightbox.css';
 
 function Button(props) {
     const color = props.color ? props.color : 'standard';
-
     return (
         <div className={`lightbox-btn ${color}`} onClick={props.handleClick}>
             {props.text}
@@ -22,7 +21,7 @@ class Lightbox extends PureComponent {
 
     hideLightBox(e) {
         e.stopPropagation(e);
-        this.props.hideLightBox();
+        this.props.hideLightbox(this.props.name);
     }
 
     static stopPropagation(e) {
@@ -31,7 +30,6 @@ class Lightbox extends PureComponent {
 
     render() {
         const hidden = this.props.shown ? '' : 'hidden';
-
         return (
             <div className={`lightbox-overlay ${hidden}`} onClick={this.hideLightBox}>
                 <div className='lightbox' onClick={Lightbox.stopPropagation}>
@@ -39,7 +37,7 @@ class Lightbox extends PureComponent {
                     {this.props.children}
                     <div className='lightbox-btn-row'>
                         <Button text='CANCEL' color='grey'
-                                handleClick={this.props.hideLightBox} />
+                                handleClick={this.props.hideLightbox} />
                         <Button text='OK'
                                 handleClick={this.processCommand} />
                     </div>
@@ -51,7 +49,7 @@ class Lightbox extends PureComponent {
 
 /** ********** LINK LIGHTBOX ********** **/
 
-class LinkLightBox extends PureComponent {
+export class LinkLightbox extends PureComponent {
     constructor(props) {
         super(props);
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -69,7 +67,6 @@ class LinkLightBox extends PureComponent {
                 link: ''
             }
         }
-
         return null
     }
 
@@ -83,15 +80,15 @@ class LinkLightBox extends PureComponent {
 
     insertLink() {
         if (this.state.textToDisplay && this.state.link) {
-            this.props.hideLightBox();
+            this.props.hideLightbox();
             this.props.insertLink(this.state.textToDisplay, this.state.link);
         }
     }
 
     render() {
         return (
-            <Lightbox title='Edit Link' shown={this.props.shown}
-                      hideLightBox={this.props.hideLightBox}
+            <Lightbox name='linkLightbox' title='Edit Link' shown={this.props.shown}
+                      hideLightbox={this.props.hideLightbox}
                       processCommand={this.insertLink}>
 
                 <label className='lightbox-label'>
@@ -115,7 +112,7 @@ class LinkLightBox extends PureComponent {
 
 /** ********** IMAGE LIGHTBOX ********** **/
 
-class ImageLightBox extends PureComponent {
+export class ImageLightbox extends PureComponent {
     constructor(props) {
         super(props);
         this.drop = this.drop.bind(this);
@@ -148,26 +145,20 @@ class ImageLightBox extends PureComponent {
 
     render() {
         return (
-            <Lightbox title='Insert Image' shown={this.props.shown}
-                      hideLightBox={this.props.hideLightBox}>
+            <Lightbox name='imageLightbox' title='Insert Image' shown={this.props.shown}
+                      hideLightbox={this.props.hideLightbox}>
 
                 <div className='img-lightbox-file-dragndrop'
-                     onDragEnter={ImageLightBox.dragenter}
-                     onDragOver={ImageLightBox.dragover}
+                     onDragEnter={ImageLightbox.dragenter}
+                     onDragOver={ImageLightbox.dragover}
                      onDrop={this.drop}>
 
                     <label htmlFor='img-lightbox-file-input'>SELECT IMAGE</label>
                     <input className='hidden' id='img-lightbox-file-input'
                            type='file' multiple accept='image/*' />
-
                 </div>
 
             </Lightbox>
         )
     }
 }
-
-export {
-    LinkLightBox,
-    ImageLightBox
-};
