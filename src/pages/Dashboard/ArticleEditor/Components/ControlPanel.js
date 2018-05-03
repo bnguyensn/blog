@@ -153,15 +153,15 @@ class ControlPanel extends PureComponent {
 
                 <Button icon='insert_link' tooltipText='Insert link'
                         handleClick={this.startLinkProcess} />
-                <Button icon='insert_photo' tooltipText='Insert image'
-                        handleClick={this.startImageProcess} />
+                {/*<Button icon='insert_photo' tooltipText='Insert image'
+                        handleClick={this.startImageProcess} />*/}
 
                 <LinkLightbox shown={this.state.linkLightboxShown}
                               hideLightbox={this.hideLightbox}
                               insertLink={this.insertLink} />
-                <ImageLightbox shown={this.state.imageLightboxShown}
+                {/*<ImageLightbox shown={this.state.imageLightboxShown}
                                hideLightbox={this.hideLightbox}
-                               insertImage={this.insertImage} />
+                               insertImage={this.insertImage} />*/}
             </div>
         )
     }

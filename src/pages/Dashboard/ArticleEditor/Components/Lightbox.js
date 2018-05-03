@@ -140,7 +140,7 @@ export class ImageLightbox extends PureComponent {
     }
 
     handleFiles(files) {
-
+        // TODO: handle file imports
     }
 
     render() {
