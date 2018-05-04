@@ -1,9 +1,14 @@
 /** ********** ARTICLE EDITOR'S CONTROL PANEL ********** **/
 
-#ae-control-panel {
+#cp-container {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.cp-divider {
+    display: block;
+    margin: .25em;
 }
 
 /** ********** ARTICLE EDITOR'S CONTROL PANEL BUTTONS ********** **/

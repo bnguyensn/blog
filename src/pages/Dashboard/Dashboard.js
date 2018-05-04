@@ -3,7 +3,7 @@
 import React, {PureComponent} from 'react';
 
 import ControlPanel from './ControlPanel/ControlPanel';
-import ArticleEditor from './ArticleEditor/ArticleEditor';
+import Editor from './Editor/Editor';
 
 import './dashboard.css';
 
@@ -12,7 +12,7 @@ class Dashboard extends PureComponent {
         return (
             <div id='dashboard-page'>
                 <ControlPanel />
-                <ArticleEditor />
+                <Editor />
             </div>
         )
     }

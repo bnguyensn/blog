@@ -8,7 +8,7 @@ import MIcon from '../../../Components/MIcon';
 import {insertLinkAtRange, getRange} from '../../../../js/dom-insertion';
 import handleFormat from '../../../../js/handleFormat';
 
-import './control-panel.css';
+import './editor-control.css';
 
 /**
  * BUTTON FOR CONTROL PANEL
@@ -68,7 +68,7 @@ class Button extends PureComponent {
  * CONTROL PANEL
  * */
 
-class ControlPanel extends PureComponent {
+class EditorControl extends PureComponent {
     constructor(props) {
         super(props);
 
@@ -122,7 +122,7 @@ class ControlPanel extends PureComponent {
 
     render() {
         return (
-            <div id='ae-control-panel'>
+            <div id='cp-container'>
 
                 <Button icon='format_bold' tooltipText='Bold'
                         handleClick={handleFormat} handleClickArgs={['bold', null]} />
@@ -166,3 +166,5 @@ class ControlPanel extends PureComponent {
         )
     }
 }
+
+export default EditorControl
