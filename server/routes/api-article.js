@@ -10,6 +10,8 @@ const path = require('path');
 router.post('/create-new-article', async (req, res, next) => {
     try {
 
+        // Connect to database
+
 
     }
     catch (e) {

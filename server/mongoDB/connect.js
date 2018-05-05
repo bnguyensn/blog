@@ -2,6 +2,7 @@
 
 /**
  * Handle mongoDB connection
+ * This file is used by the top-level app.js
  * NOTE: Important database variables should be specified in the .env file
  * */
 
